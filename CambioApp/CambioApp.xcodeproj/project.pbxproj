@@ -12,6 +12,8 @@
 		29CDCF392AE16DCF00D43689 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29CDCF382AE16DCF00D43689 /* Assets.xcassets */; };
 		29CDCF3C2AE16DCF00D43689 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29CDCF3B2AE16DCF00D43689 /* Preview Assets.xcassets */; };
 		29CDCF462AE16EE700D43689 /* RatesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CDCF452AE16EE700D43689 /* RatesApi.swift */; };
+		29CDCF492AE1A05E00D43689 /* RatesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CDCF482AE1A05E00D43689 /* RatesRouter.swift */; };
+		29CDCF4B2AE1A08000D43689 /* CurrencyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CDCF4A2AE1A08000D43689 /* CurrencyRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		29CDCF382AE16DCF00D43689 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29CDCF3B2AE16DCF00D43689 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		29CDCF452AE16EE700D43689 /* RatesApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesApi.swift; sourceTree = "<group>"; };
+		29CDCF482AE1A05E00D43689 /* RatesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesRouter.swift; sourceTree = "<group>"; };
+		29CDCF4A2AE1A08000D43689 /* CurrencyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +85,7 @@
 		29CDCF432AE16EA100D43689 /* NetworkRepository */ = {
 			isa = PBXGroup;
 			children = (
+				29CDCF472AE1A03B00D43689 /* Routers */,
 				29CDCF442AE16EBD00D43689 /* APIs */,
 			);
 			path = NetworkRepository;
@@ -92,6 +97,15 @@
 				29CDCF452AE16EE700D43689 /* RatesApi.swift */,
 			);
 			path = APIs;
+			sourceTree = "<group>";
+		};
+		29CDCF472AE1A03B00D43689 /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				29CDCF482AE1A05E00D43689 /* RatesRouter.swift */,
+				29CDCF4A2AE1A08000D43689 /* CurrencyRouter.swift */,
+			);
+			path = Routers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,6 +178,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29CDCF4B2AE1A08000D43689 /* CurrencyRouter.swift in Sources */,
+				29CDCF492AE1A05E00D43689 /* RatesRouter.swift in Sources */,
 				29CDCF372AE16DCE00D43689 /* ContentView.swift in Sources */,
 				29CDCF352AE16DCE00D43689 /* CambioAppApp.swift in Sources */,
 				29CDCF462AE16EE700D43689 /* RatesApi.swift in Sources */,
