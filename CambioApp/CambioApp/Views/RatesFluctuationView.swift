@@ -1,0 +1,144 @@
+//
+//  RatesFluctuationView.swift
+//  CambioApp
+//
+//  Created by Usr_Prime on 19/10/23.
+//
+
+import SwiftUI
+
+struct Fluctuation: Identifiable {
+    let id = UUID()
+    var symbol: String
+    var change: Double
+    var changePct: Double
+    var endRate: Double
+}
+
+class RatesFluctuationViewModel: ObservableObject {
+    @Published var fluctuations: [Fluctuation] = [
+        Fluctuation(symbol: "USD", change: 0.0635, changePct: 0.0483, endRate: 131.651142),
+        Fluctuation(symbol: "EUR", change: 0.0635, changePct: 0.0483, endRate: 131.651142),
+        Fluctuation(symbol: "EUR", change: 0.0635, changePct: 0.0483, endRate: 131.651142),
+        Fluctuation(symbol: "GBP", change: 0.0635, changePct: 0.0483, endRate: 131.651142)
+    ]
+}
+
+struct RatesFluctuationView: View {
+    @StateObject var viewModel = RatesFluctuationViewModel()
+    @State private var searchText = ""
+    
+    var body: some View {
+        NavigationView {
+            VStack {
+                baseCurrencyPeriodFilterView
+                ratesFluctuationListView
+            }
+            .searchable(text: $searchText)
+            .navigationTitle("Conversão de Moedas")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                Button {
+                    print("Filtrar moedas")
+                } label: {
+                    Image(systemName: "slider.horizontal.3")
+                }
+            }
+        }
+    }
+    
+    private var baseCurrencyPeriodFilterView: some View {
+        HStack(alignment: .center, spacing: 16) {
+            Button {
+                print("Filtrar moeda base")
+            } label: {
+                Text("BRL")
+                    .font(.system(size: 14, weight: .bold))
+                    .padding(.init(top: 4, leading: 8, bottom: 4, trailing: 8))
+                    .foregroundColor(.white)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(.white, lineWidth: 1)
+                    )
+            }
+            .background(Color(UIColor.lightGray))
+            .cornerRadius(8)
+            
+            Button {
+                print("1 dia")
+            } label: {
+                Text("1 dia")
+                    .font(.system(size: 14, weight: .bold))
+                    .foregroundColor(.blue)
+                    .underline()
+            }
+            
+            Button {
+                print("7 dias")
+            } label: {
+                Text("7 dias")
+                    .font(.system(size: 14, weight: .bold))
+                    .foregroundColor(.gray)
+            }
+            
+            Button {
+                print("1 mês")
+            } label: {
+                Text("1 mês")
+                    .font(.system(size: 14, weight: .bold))
+                    .foregroundColor(.gray)
+            }
+            
+            Button {
+                print("6 meses")
+            } label: {
+                Text("6 meses")
+                    .font(.system(size: 14, weight: .bold))
+                    .foregroundColor(.gray)
+            }
+            
+            Button {
+                print("1 ano")
+            } label: {
+                Text("1 ano")
+                    .font(.system(size: 14, weight: .bold))
+                    .foregroundColor(.gray)
+            }
+        }
+        .padding(.top, 8)
+        .padding(.bottom, 16)
+    }
+    
+    private var ratesFluctuationListView: some View {
+        List(viewModel.fluctuations) { fluctuation in
+            VStack {
+                HStack {
+                    Text("\(fluctuation.symbol) / BRL")
+                        .font(.system(size: 14, weight: .medium))
+                    Text(fluctuation.endRate.formatter(decimalPlaces: 2))
+                        .font(.system(size: 14, weight: .bold))
+                    Text(fluctuation.change.formatter(decimalPlaces: 4, with: true))
+                        .font(.system(size: 14, weight: .bold))
+                        .foregroundColor(fluctuation.change.color)
+                    Text("(\(fluctuation.changePct.toPercentage()))")
+                        .font(.system(size: 14, weight: .bold))
+                        .foregroundColor(fluctuation.change.color)
+                }
+                Divider()
+                    .padding(.leading, -20)
+                    .padding(.trailing, -40)
+            }
+            .listRowSeparator(.hidden)
+            .listRowBackground(Color.white)
+        }
+        .listStyle(.plain)
+    }
+}
+
+struct RatesFluctuationView_Previews: PreviewProvider {
+    static var previews: some View {
+        RatesFluctuationView()
+    }
+}
+
+
